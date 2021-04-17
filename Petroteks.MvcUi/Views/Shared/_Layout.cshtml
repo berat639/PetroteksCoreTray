@@ -1,0 +1,265 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Start of petroteks Zendesk Widget script -->
+    <!-- Start of  Zendesk Widget script -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37261116-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-37261116-2');
+    </script>
+    <!-- End of  Zendesk Widget script -->
+    <!-- End of petroteks Zendesk Widget script -->
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["Description"]">
+    <meta name="keywords" content="@ViewData["Keywords"]">
+    <meta charset="utf-8">
+    @Html.Raw(ViewData["MetaTags"])
+    <meta name="author" content="Petroteks">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link href="~/images/cropped-favicon-32x32.png" rel="icon">
+    <link href="~/NewLayout/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet"/>
+    <!-- Bootstrap CSS File -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="all"/>
+    <link href="~/NewLayout/css/materialize.min.css" rel="stylesheet" />
+    <!-- Libraries CSS Files -->
+    <link href="~/NewLayout/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="~/NewLayout/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/NewLayout/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <link href="~/NewLayout/lib/owlcarousel/assets/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/NewLayout/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/NewLayout/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="~/NewLayout/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <!-- Main Stylesheet File -->
+    <link href="~/NewLayout/css/style.css" rel="stylesheet" />
+    <style>
+
+        .slider .slides li img {
+        }
+
+        .modal-content .slider .slides {
+            background-color: #9e9e9e;
+            margin: 0;
+            height: 100% !important;
+        }
+
+        .slider .indicators .indicator-item {
+            background-color: #666666;
+            border: 3px solid #ffffff;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
+
+            .slider .indicators .indicator-item.active {
+                background-color: #ffffff;
+            }
+
+        .slider {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+            .slider .indicators {
+                bottom: 60px;
+                z-index: 100;
+                /* text-align: left; */
+            }
+
+        @@media screen and (max-width: 1900px) and (min-width: 900px) {
+            .img-fluid {
+                max-width: 130% !important;
+                height: auto;
+            }
+        }
+
+        .h1 {
+            color: #413e66;
+            margin-bottom: 40px;
+            font-size: 48px;
+            font-weight: 600;
+        }
+
+        .slideh1 {
+            color: #413e66;
+            margin-bottom: 40px;
+            font-size: 2.28rem;
+            font-weight: 700;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        @@media only screen and (max-width: 767px) {
+            .slideh1 {
+                font-size: 22px !important;
+            }
+        }
+
+        .modal-content {
+            border: none !important;
+        }
+
+        .modal {
+            max-height: fit-content;
+        }
+    </style>
+</head>
+<body itemscope="" itemtype="https://schema.org/WebPage">
+
+
+
+    <header id="header">
+
+        <div class="container">
+            <div class="logo float-left">
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <h1 class="text-light"><a asp-area="" asp-controller="Home" asp-action="Index" title="logo" class="scrollto"><img src="~/images/logopetroteks.png" alt="logo" /></a></h1>
+                <!-- <a href="#header" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a> -->
+            </div>
+
+            <nav class="main-nav float-right d-none d-lg-block">
+                <ul>
+                    @await Component.InvokeAsync("Navbar")
+                </ul>
+
+            </nav>
+           
+
+            <!-- .main-nav -->
+
+        </div>
+    </header><!-- #header -->
+    <!--==========================
+      Intro Section
+    ============================-->
+    @RenderBody()
+
+    <!--==========================
+      Footer
+    ============================-->
+    <footer id="footer" class="section-bg">
+        @await Component.InvokeAsync("Footer")
+
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong>Petroteks</strong>. All Rights Reserved
+            </div>
+
+        </div>
+    </footer><!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+    <script src="layout-main-js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        $(".hover").mouseleave(
+            function () {
+                $(this).removeClass("hover");
+            }
+        ); $(document).ready(function () {
+            if ($(window).innerWidth() <= 900) {
+                $(".alignchange").removeClass("center-align my-auto");
+                $(".selected").removeClass("center-align");
+                $(".selected").css("cssText", "left:0%!important;");
+            }
+            else {
+                $(".selected").css("cssText", "left:15%!important;");
+                $(".alignchange").addClass("center-align my-auto");
+                $(".selected").addClass("center-align");
+            }
+            $('.slider').slider({
+                full_width: false,
+                height: 650, // default - height : 400
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var Modalelem = document.querySelector('#modal1');
+            var deneme2 = $("#contentify").html();
+            if (deneme2.trim().length > 0) {
+                var instance = M.Modal.init(Modalelem);
+                instance.open();
+            }
+        });
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                items: 1,
+                autoplay: true,
+                autoPlay: 1000,
+                smartSpeed: 1000,
+                loop: true,
+                singleItem: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    300: {
+                        items: 1,
+                    },
+                    400: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 1,
+                    },
+                    768: {
+                        items: 1,
+                    },
+                    1080: {
+                        items: 1,
+                    }
+
+                }
+            });
+            setTimeout(function () { $('.owl-carousel').trigger('refresh.owl.carousel'); }, 150);
+        })
+
+
+    </script>
+
+
+
+    <!--[if lt IE 10]><script type="text/javascript" src="../js/placeholder.js"></script><![endif]-->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+

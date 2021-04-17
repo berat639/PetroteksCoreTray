@@ -1,0 +1,76 @@
+﻿@model MainPageViewModel
+@{
+    ViewData["Title"] = Model.MainPage.Title;
+    ViewData["Description"] = Model.MainPage.Description;
+    ViewData["MetaTags"] = Model.MainPage.MetaTags;
+    ViewData["Keywords"] = Model.MainPage.Keywords;
+}
+<style>
+    @@media screen and (max-width: 1900px), (min-width: 900px) {
+        .caption {
+            transform: translateX(0px) translateY(-70px) !important;
+        }
+    }
+
+    .color-nav-blue {
+        color: #413e66;
+        font-weight: 600;
+    }
+
+    .color-blue {
+        color: #413e66;
+    }
+
+    .img-calign {
+        background-size: 100% auto !important;
+        background-repeat: no-repeat !important;
+    }
+</style>
+<!--==========================
+  Header Section
+ ============================-->
+@await Component.InvokeAsync("Notice")
+@Html.Raw(Model.MainPage.Slider)
+
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content" id="contentify" style="padding:0!important">
+        @Html.Raw(Model.MainPage.Slider)
+    </div>
+    <a href="#!" style="position: fixed; top: 10px; color: #5d5d5d; font-size: 1.5em; z-index: 1000; right: 10px;" class="modal-close"><i class="fa fa-close"></i></a>
+</div>
+
+<main id="main">
+    @Html.Raw(Model.MainPage.TopContent)
+</main>
+
+@Html.Raw(Model.MainPage.BottomContent)
+
+@section Scripts{
+    <script>
+
+        function BilgilendirmeMail() {
+            var mailadress = $("#email").val();
+            if (mailadress != null && mailadress != "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/Home/BilgilendirmeMail?email=" + mailadress,
+                    success: function (response) {
+                        toastr.success(response);
+                    },
+                    failure: function (response) {
+                        toastr.error('Sunucu ile bağlantı kurulamadı.');
+                    },
+                    error: function (response) {
+                        toastr.error('Sunucu ile bağlantı kurulamadı.');
+                    }
+                });
+            }
+            else {
+                toastr.error('Lütfen e-mail adresini doğru giriniz');
+            }
+        }
+    </script>
+}

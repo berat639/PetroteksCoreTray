@@ -1,0 +1,24 @@
+﻿@model Product
+
+@inject IWebsiteCookieService websiteCookieService
+@{
+    Website CurrentWebsite = websiteCookieService.Get("CurrentWebsite");
+}
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["Description"] = Model.Description;
+    ViewData["MetaTags"] = Model.MetaTags;
+    ViewData["Keywords"] = Model.Keywords;
+
+
+}
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+@Html.Raw(Model.Content)
+
+
+
+
+@section Scripts{
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5eb918612819c5f8"></script>
+}

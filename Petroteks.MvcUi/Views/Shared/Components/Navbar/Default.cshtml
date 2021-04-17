@@ -1,0 +1,54 @@
+﻿@model UI_Navbar
+@inject Petroteks.MvcUi.Services.ILanguageCookieService languageCookieService
+@inject UrlControlHelper urlControlHepler
+@inject IRouteTable routeTable
+@{
+    Language CurrentLanguage = languageCookieService.Get("CurrentLanguage");
+    var currentPage = urlControlHepler.GetCurrnetPage();
+    //var url = Url.Action($"{currentPage.action}", $"{currentPage.controller}", new { area = $"{currentPage.area}" });
+}
+
+@if (Model != null)
+{
+    <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">@Model.Home</a></li>
+    <li class="drop-down">
+        <a href="">@Model.Products</a>
+        <ul>
+            @await Component.InvokeAsync("CategoryList")
+        </ul>
+    </li>
+
+    @*<li class="drop-down">
+        <a href="" title="Sayfalar">@Model.Pages</a>
+            <ul>
+                @await Component.InvokeAsync("PagesList")
+            </ul>
+        </li>*@
+
+
+    <li><a asp-area="" asp-controller="Home" asp-action="AboutUs" title="@Model.AboutUs">@Model.AboutUs</a></li>
+
+    <li><a asp-area="" asp-controller="Home" asp-action="PetroBlog" asp-route-blogPageName="@routeTable.Get(EntityName.Blog,PageType.List)" title="@Model.PetroBlog">@Model.PetroBlog</a></li>
+    <li><a asp-area="" asp-controller="Home" asp-action="Contact" title="@Model.Contact">@Model.Contact</a></li>
+    <li class="drop-down">
+        <a href=""><img src="~/LanguageImages/@CurrentLanguage.IconCode" alt="@CurrentLanguage.KeyCode" />@CurrentLanguage.Name</a>
+        <ul>
+            @foreach (var item in LanguageContext.WebsiteLanguages)
+            {
+                <li>
+                    <a id="@item.KeyCode" title="@item.KeyCode" href="@Url.Action("ChangeCulture","Home",new { KeyCode=item.KeyCode})">
+                        <img src="~/LanguageImages/@item.IconCode" asp-append-version="true" alt="@item.Name"> @item.Name
+                    </a>
+                </li>
+            }
+        </ul>
+    </li>
+    <li>
+        <form class="form d-flex" asp-controller="Search" asp-action="Index" method="post">
+            <input class="form-control flex-grow-1" type="search" placeholder="Ara" name="s" id="s" value="">
+            <button class="btn btn-success btn-sm my-auto ml-2 px-2" type="submit" title="Site içinde ara"name="searchType" value="@SearchTypeInfo.Classic"><i class="fas fa-search"></i></button>
+            <button class="btn btn-success btn-sm my-auto ml-2 px-2" title="Google ile ara" type="submit" name="searchType" value="@SearchTypeInfo.Google"><i class="fab fa-google"></i></button>
+        </form>
+    </li>
+
+}

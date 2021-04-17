@@ -1,0 +1,77 @@
+﻿@model ProductListViewModel
+@inject IRouteTable routeTable
+@inject IWebsiteCookieService websiteCookieService
+@{
+    Website CurrentWebsite = websiteCookieService.Get("CurrentWebsite");
+}
+@{
+    ViewData["Title"] = Model.CurrentCategory.Name;
+    ViewData["Description"] = Model.CurrentCategory.Description;
+    ViewData["Keywords"] = Model.CurrentCategory.Keywords;
+    ViewData["MetaTags"] = Model.CurrentCategory.MetaTags;
+}
+ 
+
+
+<section id="team" class="mt-5">
+
+    <div class="section-header">
+        <h3>@Model.CurrentCategory.Name</h3>
+        @Html.Raw(Model.CurrentCategory.Content) 
+    </div>
+
+    <div class="container"> 
+
+        <div class="row  bg-white">
+            @foreach (var item in Model.SubCategories)
+            {
+                <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" href="@Url.Action(ActionsModel.CategoryDetail,ControllersModel.Detail, new { categoryName=GetFriendlyTitle(item.Name) ,  id=item.id,pageTag=routeTable.Get(EntityName.Category,PageType.Detail)})">
+                    <figure class="snip1401">
+                        @if (item.PhotoPath == null)
+                        {
+                            <img src="~/images/Lifta.jpg" style="width:450px!important;height:250px!important;" />
+                        }
+                        else
+                        {
+                            <img src="~/CategoryImages/@item.PhotoPath" style="width:450px!important;height:250px!important;" />
+                        }
+                        <figcaption>
+                            <h3>@item.Name</h3>
+
+                        </figcaption><i class="ion-ios-pricetags-outline"></i>
+
+                    </figure>
+                </a>
+
+            }
+
+            @foreach (var item in Model.Products)
+            {
+                <a href="@Url.Action(ActionsModel.ProductDetail,ControllersModel.Detail,new { produtname=GetFriendlyTitle(item.SupTitle) , id=item.id,pageTag=routeTable.Get(EntityName.Product,PageType.Detail)})">
+                    <figure class="snip1401">
+                        @if (item.PhotoPath == null)
+                        {
+                            <img src="~/images/Lifta.jpg" style="width:450px!important;height:250px!important;" />
+                        }
+                        else
+                        {
+                            <img src="~/ProductImages/@item.PhotoPath" style="width:450px!important;height:250px!important;" />
+                        }
+                        <figcaption>
+                            <h3>@item.SupTitle</h3>
+
+                        </figcaption><i class="ion-ios-pricetags-outline"></i>
+
+                    </figure>
+                </a>
+            }
+
+
+
+
+        </div>
+
+
+    </div>
+</section>
+
